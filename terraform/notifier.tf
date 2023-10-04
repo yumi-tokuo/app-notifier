@@ -1,6 +1,6 @@
 # MODULES ORCHESTRATOR
 
-module "network" {
+module "rede" {
     source               = "./modules/network"
     vpc_cidr             = "10.0.0.0/16"
     vpc_az1              = "${var.vpc_az1}"
@@ -9,20 +9,6 @@ module "network" {
     vpc_sn_pub_az2_cidr  = "${var.vpc_sn_pub_az2_cidr}"
     vpc_sn_priv_az1_cidr = "${var.vpc_sn_priv_az1_cidr}"
     vpc_sn_priv_az2_cidr = "${var.vpc_sn_priv_az2_cidr}"
-}
-
-module "database" {
-    source               = "./modules/database"
-    rds_identifier       = "${var.rds_identifier}"
-    rds_engine_version   = "${var.rds_engine_version}"
-    rds_sn_group_name    = "${var.rds_sn_group_name}"
-    rds_param_group_name = "${var.rds_param_group_name}"
-    rds_dbname           = "${var.rds_dbname}"
-    rds_dbuser           = "${var.rds_dbuser}"
-    rds_dbpassword       = "${var.rds_dbpassword}"
-    vpc_sn_priv_az1_id   = "${module.network.vpc_sn_priv_az1_id}"
-    vpc_sn_priv_az2_id   = "${module.network.vpc_sn_priv_az2_id}"
-    vpc_sg_priv_id       = "${module.network.vpc_sg_priv_id}"
 }
 
 module "compute" {
@@ -46,4 +32,18 @@ module "compute" {
     rds_dbuser               = "${var.rds_dbuser}"
     rds_dbpassword           = "${var.rds_dbpassword}"
     rds_dbname               = "${var.rds_dbname}"
+}
+
+module "dados" {
+    source               = "./modules/database"
+    rds_identifier       = "${var.rds_identifier}"
+    rds_engine_version   = "${var.rds_engine_version}"
+    rds_sn_group_name    = "${var.rds_sn_group_name}"
+    rds_param_group_name = "${var.rds_param_group_name}"
+    rds_dbname           = "${var.rds_dbname}"
+    rds_dbuser           = "${var.rds_dbuser}"
+    rds_dbpassword       = "${var.rds_dbpassword}"
+    vpc_sn_priv_az1_id   = "${module.network.vpc_sn_priv_az1_id}"
+    vpc_sn_priv_az2_id   = "${module.network.vpc_sn_priv_az2_id}"
+    vpc_sg_priv_id       = "${module.network.vpc_sg_priv_id}"
 }

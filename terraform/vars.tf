@@ -1,4 +1,4 @@
-# NETWORK VARS CUSTOM VALUES
+# REDE VARS CUSTOM VALUES
 
 variable "vpc_cidr" {
     type    = string
@@ -34,45 +34,6 @@ variable "vpc_sn_priv_az2_cidr" {
     type    = string
     default = "10.0.4.0/24"
 }
-
-
-# DATABASE VARS CUSTOM VALUES
-
-variable "rds_identifier" {
-    type    = string
-    default = "rds-notifier"
-}
-
-variable "rds_engine_version" {
-    type    = string
-    default = "8.0.33"
-}
-
-variable "rds_sn_group_name" {
-    type    = string
-    default = "rds-sn-group-notifier"
-}
-
-variable "rds_param_group_name" {
-    type    = string
-    default = "rds-param-group-notifier"
-}
-
-variable "rds_dbname" {
-    type    = string
-    default = "rdsdbnotifier"
-}
-
-variable "rds_dbuser" {
-    type    = string
-    default = "rdsdbadmin"
-}
-
-variable "rds_dbpassword" {
-    type    = string
-    default = "rdsdbadminpwd"
-}
-
 
 # COMPUTE VARS CUSTOM VALUES
 
@@ -125,4 +86,41 @@ variable "ec2_asg_min_size" {
 variable "ec2_asg_max_size" {
     type    = number
     default = 8
+}
+
+# DADOS VARS CUSTOM VALUES
+
+variable "rds_identifier" {
+    type    = string
+    default = "rds-notifier"
+}
+
+variable "rds_engine_version" {
+    type    = string
+    default = "8.0.33"
+}
+
+variable "rds_sn_group_name" {
+    type    = string
+    default = "rds-sn-group-notifier"
+}
+
+variable "rds_param_group_name" {
+    type    = string
+    default = "rds-param-group-notifier"
+}
+
+variable "rds_dbname" {
+    type    = string
+    default = "rdsdbnotifier"
+}
+
+variable "rds_dbuser" {
+    type    = string
+    default = "rdsdbadmin"
+}
+
+variable "rds_dbpassword" {
+    type    = string
+    default = "rdsdbadminpwd"
 }
